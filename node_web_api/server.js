@@ -1,8 +1,10 @@
 const express = require('express');
+const axios = require('axios');
+const { hostname } = require('os');
 const path = require('path');
 const app = express(),
       bodyParser = require("body-parser");
-      port = 80;
+      port = 8000;
 
 // place holder for the data
 const users = [
@@ -38,24 +40,20 @@ app.post('/api/user', (req, res) => {
   res.json("user addedd");
 });
 
-app.post('/api/wellnesstopics', (req, res) => {
-  const url='https://health.gov/myhealthfinder/api/v3/itemlist.json?Type=topic'
-  const axios = require('axios');
+const fetchData = async (req, res, next) => {
+  try {    
+    const response = await axios.get('https://health.gov/myhealthfinder/api/v3/itemlist.json?Type=topic');
+    req.healthData = response.data.Result.Items.Item;
+    next();
+  } catch (error) {
+    console.error('Error:', error.message);
+    res.status(500).send('Internal Server Error');
+  }
+};
 
-  axios.post(url)
-    .then(response => {
-      console.log(response.data);
-      const res_data=response.data;
-    })
-    .catch(error => {
-      console.error('Error:', error.message);
-    });
-    const jsonData = JSON.parse(res_data);
-    
-    // Access a specific item
-    const final_res = jsonData.Items.Item;
-    console.log(final_res);
-    res.json(final_res);
+app.get('/api/wellnesstopics', fetchData,(req, res) => {
+  const responseData = req.healthData;
+  res.json(responseData);
 });
 
 app.get('/', (req,res) => {
