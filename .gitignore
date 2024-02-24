@@ -3,6 +3,7 @@
 # compiled output
 /dist
 /react-app-prj/build
+/react-app-jwt/build
 /tmp
 /out-tsc
 # Only exists if Bazel was run
@@ -11,6 +12,7 @@
 # dependencies
 /node_modules
 /react-app-prj/node_modules
+/react-app-jwt/node_modules
 /node_web_api/node_modules
 
 # profiling files
@@ -44,6 +46,7 @@ yarn-error.log
 testem.log
 /typings
 
+react-app-prj/*
 # System Files
 .DS_Store
 Thumbs.db
