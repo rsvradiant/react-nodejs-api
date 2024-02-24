@@ -32,8 +32,7 @@ function App() {
         <Header></Header>          
         <div className="row mrgnbtm">
         {isLoading && <div style={loaderStyle}>
-        <RotatingTriangles visible={isLoading}
-          marginTop="50%"
+        <RotatingTriangles visible={isLoading}          
           height="80"
           width="80"
           color="#4fa94d"
@@ -41,8 +40,7 @@ function App() {
           wrapperStyle={{}}
           wrapperClass=""
           />
-          </div>
-        
+          </div>        
         }
         {!isLoading && <HealthTopics topics={topics}></HealthTopics>}
           
