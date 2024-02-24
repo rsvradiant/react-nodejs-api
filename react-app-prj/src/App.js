@@ -4,7 +4,7 @@ import './App.css';
 import { Header } from './components/Header'
 import { HealthTopics } from './components/HealthTopics'
 import { getHealthTopics } from './services/HealthService'
-import { RotatingTriangles } from "react-loader-spinner";
+import { RotatingTriangles, DNA } from "react-loader-spinner";
 
 function App() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,13 +32,14 @@ function App() {
         <Header></Header>          
         <div className="row mrgnbtm">
         {isLoading && <div style={loaderStyle}>
-        <RotatingTriangles visible={isLoading}          
+        
+          <DNA
+          visible={isLoading}
           height="80"
           width="80"
-          color="#4fa94d"
-          ariaLabel="rotating-triangles-loading"
+          ariaLabel="dna-loading"
           wrapperStyle={{}}
-          wrapperClass=""
+          wrapperClass="dna-wrapper"
           />
           </div>        
         }
