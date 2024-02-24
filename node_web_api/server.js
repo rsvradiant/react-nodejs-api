@@ -7,38 +7,10 @@ const app = express(),
       port = 8000;
 
 // place holder for the data
-const users = [
-  {
-    firstName: "first1",
-    lastName: "last1",
-    email: "abc@gmail.com"
-  },
-  {
-    firstName: "first2",
-    lastName: "last2",
-    email: "abc@gmail.com"
-  },
-  {
-    firstName: "first3",
-    lastName: "last3",
-    email: "abc@gmail.com"
-  }
-];
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../react-app-prj/build')));
 
-app.get('/api/users', (req, res) => {
-  console.log('api/users called!')
-  res.json(users);
-});
-
-app.post('/api/user', (req, res) => {
-  const user = req.body.user;
-  console.log('Adding user:::::', user);
-  users.push(user);
-  res.json("user addedd");
-});
 
 const fetchData = async (req, res, next) => {
   try {    
