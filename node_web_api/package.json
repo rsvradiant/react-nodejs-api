@@ -4,7 +4,7 @@
   "description": "Project React with Nodejs - Login",
   "main": "server.js",
   "scripts": {
-    "start": "node server.bundle.js",
+    "start": "node server.js",
     "build": "webpack",
     "dev": "nodemon ./server.js localhost 8000"
   },
