@@ -10,6 +10,6 @@ COPY node_web_api/package*.json ./node_web_api/
 RUN cd node_web_api && npm install
 COPY node_web_api/server.js ./node_web_api/
 
-EXPOSE 80H
+EXPOSE 80
 
 CMD ["node", "./node_web_api/server.js"]
